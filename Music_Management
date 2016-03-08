@@ -150,7 +150,6 @@ int xianshi()
 	system("cls");
 
 	int i;
-
 	if (num == 0)
 	{
 		MessageBox(NULL, TEXT("歌曲库文件为空，请录入并保存后查询"), TEXT("提示"), MB_OK);
@@ -229,7 +228,6 @@ int chaxun()
 	else
 	{
 		MessageBox(NULL, TEXT("没有找到该结果"), TEXT("提示"), MB_OK);
-
 	}
 
 	return 0;
@@ -292,8 +290,6 @@ int shanchu()
 			jiaohuan(n, num);
 			num = num - 1;
 			MessageBox(NULL, TEXT("删除成功"), TEXT("提示"), MB_OK);
-
-
 		}
 	}
 	system("cls");
