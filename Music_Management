@@ -67,8 +67,6 @@ int zhujiemian()
 	case 7:tuichu(); break;
 	default: {
 		gets();
-		MessageBox(NULL, TEXT("您的输入有误，请重新输入"), TEXT("提示"), MB_OK);
-		system("cls");
 	}; break;
 	}
 	menu();
@@ -81,7 +79,6 @@ int duqu()
 	mic = fopen("mic.ini", "r");
 	if (mic== NULL)
 	{
-		MessageBox(NULL,TEXT("没有找到歌曲库，应首先添加歌曲"),TEXT("提示"),MB_OK);
 		mic = fopen("mic.ini", "a");
 		num=0;
 		fputc(num, mic);
@@ -117,8 +114,6 @@ int tianjia()
 		if (strcmp(music[num].name, music[i].name) == 0)
 			if (strcmp(music[num].singer, music[i].singer) == 0)
 			{
-				MessageBox(NULL, TEXT("该歌曲已存在,无法继续添加"), TEXT("提示"), MB_OK);
-				system("cls");
 				gets();
 				menu();
 			}
@@ -131,29 +126,22 @@ int tianjia()
 	scanf("%d-%d-%d", &music[num].date.year, &music[num].date.month,&music[num].date.day);
 	while (music[num].date.year > 2016 || music[num].date.year < 1700 || music[num].date.month < 1 || music[num].date.month>12 || music[num].date.day < 1 || music[num].date.day>31)
 	{
-		MessageBox(NULL, TEXT("您的输入有误，请重新输入"), TEXT("提示"), MB_OK);
 		gets();
 		scanf("%d-%d-%d", &music[num].date.year, &music[num].date.month, &music[num].date.day);
 	}
 	printf("请输入该歌曲的时长\n");
 	scanf("%d", &music[num].time);
 	num++;
-	change = 1;
-	MessageBox(NULL, TEXT("添加数据成功"), TEXT("提示"), MB_OK);
-	system("cls");
+	change =1;
 	menu();
 	return 0;
 
 }
 int xianshi()
 {
-	system("cls");
-
 	int i;
 	if (num == 0)
-	{
-		MessageBox(NULL, TEXT("歌曲库文件为空，请录入并保存后查询"), TEXT("提示"), MB_OK);
-		system("cls");
+        {
 		main();
 	}
 	printf("  ");
@@ -199,7 +187,6 @@ int chaxun()
 	if (j > 0)
 	{
 		{
-			system("cls");
 			printf("找到了如下歌曲：\n");
 			printf("  ");
 			printf("歌曲名称               ");
@@ -227,7 +214,7 @@ int chaxun()
 	}
 	else
 	{
-		MessageBox(NULL, TEXT("没有找到该结果"), TEXT("提示"), MB_OK);
+		
 	}
 
 	return 0;
@@ -248,14 +235,13 @@ int shanchu()
 			j++;
 		}
 	if (j == 0)
-		MessageBox(NULL, TEXT("没有找到相应歌曲"), TEXT("提示"), MB_OK);
+		
 	else
 	{
 		if (j == 1)
 		{
 			jiaohuan(k[0], num);
 			num = num - 1;
-			MessageBox(NULL, TEXT("删除成功"), TEXT("提示"), MB_OK);
 		}
 		else
 		{
@@ -289,10 +275,8 @@ int shanchu()
 			scanf("%d", &n);
 			jiaohuan(n, num);
 			num = num - 1;
-			MessageBox(NULL, TEXT("删除成功"), TEXT("提示"), MB_OK);
 		}
 	}
-	system("cls");
 	return 0;
 }
 int paixu()
@@ -305,8 +289,6 @@ int paixu()
 	if (i != 1 && i != 2 && i != 3 && i != 4)
 	{
 		gets();
-		MessageBox(NULL, TEXT("您的输入有误，请重新输入"), TEXT("提示"), MB_OK);
-		system("cls");
 		menu();
 	}
 	printf("请输入您要进行的排序方式：\n");
@@ -316,8 +298,6 @@ int paixu()
 	if (j!= 1 && j != 2)
 	{
 		gets();
-		MessageBox(NULL, TEXT("您的输入有误，请重新输入"), TEXT("提示"), MB_OK);
-		system("cls");
 		menu();
 	}
 	if (i == 1 && j == 1)
@@ -454,7 +434,6 @@ int paixu()
 											}
 									}
 								}
-	MessageBox(NULL, TEXT("删除成功"), TEXT("提示"), MB_OK);
 	return 0;
 }
 int baocun()
@@ -463,13 +442,11 @@ int baocun()
 	FILE *mic;
 	if ((mic = fopen("mic.ini", "w")) == NULL)
 	{
-		MessageBox(NULL, TEXT("无法打开文件，请检查文件是否被占用"), TEXT("提示"), MB_OK);
-		system("cls");
 		main();
 	}
 
 	if (change==0)
-		MessageBox(NULL, TEXT("文件没有进行更改，无需保存"), TEXT("提示"), MB_OK);
+		
 	else
 	{
 		fputc(num, mic);
@@ -484,10 +461,8 @@ int baocun()
 		}
 
 		fclose(mic);
-		MessageBox(NULL, TEXT("保存文件成功"), TEXT("提示"), MB_OK);
 		change = 0;
 	}
-	system("cls");
 	menu();
 	return 0;
 }
@@ -543,7 +518,6 @@ int tuichu()
 				}
 
 				fclose(mic);
-				MessageBox(NULL, TEXT("保存文件成功"), TEXT("提示"), MB_OK);
 				change = 0;
 			}
 			exit(0);
@@ -554,7 +528,7 @@ int tuichu()
 				exit(0);
 			}
 			else
-				MessageBox(NULL, TEXT("您的输入有误,请重新输入"), TEXT("提示"), MB_OK);
+				
 	}
 	else
 		exit(0);
